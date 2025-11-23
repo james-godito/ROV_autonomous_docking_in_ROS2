@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+    <let name="pkg_share"          value="$(find-pkg-share acit4820_project)"/>
+    <let name="rov_urdf_path"      value="$(var pkg_share)/urdf/bluerov2.urdf.xacro"/>
+    <!--<let name="dock_urdf_path"     value="$(var pkg_share)/urdf/docking_station.urdf"/>-->
+    <let name="dock_sdf_path"      value="$(var pkg_share)/models/docking_station/model.sdf"/>
+    <let name="world_path"         value="$(var pkg_share)/worlds/demo_world.world"/>
+    <let name="bridge_config_path" value="$(var pkg_share)/config/gz_bridge.yaml"/>
+    <let name="ekf_config_path"    value="$(var pkg_share)/config/ekf.yaml"/>
+    <let name="rviz_config_path"   value="$(var pkg_share)/rviz/bluerov2.rviz"/>
+
+    <arg name="dock_x"   default="0.0" />
+    <arg name="dock_y"   default="0.0" />
+    <arg name="dock_z"   default="-0.33"/>
+    <arg name="rov_x"    default="1.5" />
+    <arg name="rov_y"    default="0.2" />
+    <arg name="rov_z"    default="0.0" />
+    <arg name="rov_yaw"  default="3.14" />
+
+    <arg name="headless" default="false" description="Run Gazebo without the GUI client"/>
+    <arg name="aruco"    default="true"  description="Run aruco marker detection node"/>
+    <arg name="control"  default="false" description="Run rov autonomous control node"/>
+    <arg name="thruster" default="false" description="Run thruster manager node"/>
+        
+    <executable cmd="gz sim -s -r $(var world_path)" shell="true" name="gz_server" output="screen"/>
+
+    <executable cmd="gz sim -g" shell="true" name="gz_client" output="screen" unless="$(var headless)"/>
+
+    <node pkg="robot_state_publisher" exec="robot_state_publisher" name="bluerov2">
+        <param name="robot_description" value="$(command 'xacro $(var rov_urdf_path)')"/>
+        <param name="use_sim_time"      value="true"/>
+    </node>
+
+    <node pkg="ros_gz_sim" exec="create" name="spawn_bluerov2" args="-topic robot_description -entity bluerov2 -x $(var rov_x) -y $(var rov_y) -z $(var rov_z) -Y $(var rov_yaw)" output="screen"/>
+    <node pkg="ros_gz_sim" exec="create" name="spawn_docking_station" args="-file $(var dock_sdf_path) -entity docking_station -x $(var dock_x) -y $(var dock_y) -z $(var dock_z)" namespace="docking_station" output="screen"/>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge" name="parameter_bridge">
+        <param name="config_file" value="$(var bridge_config_path)"/>
+    </node>
+
+    <node pkg="rviz2" exec="rviz2" name="rviz2" args="-d $(var rviz_config_path)">
+        <param name="use_sim_time" value="true"/>
+    </node>
+
+    <!-- EKF node -->
+    <node pkg="robot_localization" exec="ekf_node" name="ekf_node">
+        <param from="$(var ekf_config_path)"/>
+        <param name="use_sim_time" value="true"/>
+    </node>
+
+    <node pkg="acit4820_project" exec="bluerov_pose_node"     name="bluerov_pose_node"/>
+    <node pkg="acit4820_project" exec="rov_control_node"      name="rov_control_node" if="$(var control)"/> 
+    <node pkg="acit4820_project" exec="aruco_node"            name="aruco_node" if="$(var aruco)"/>
+    <node pkg="acit4820_project" exec="thruster_manager_node" name="thruster_manager_node" if="$(var thruster)"/>
+</launch>

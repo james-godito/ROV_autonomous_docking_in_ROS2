@@ -1,0 +1,36 @@
+thrusters:
+  - name: 1
+    position: [0.1355, -0.1, -0.0725]
+    direction: [0.707107, -0.707107, 0.0]
+    min_thrust: -40.0
+    max_thrust: 40.0
+
+  - name: 2
+    position: [0.1355, 0.1, -0.0725]
+    direction: [0.707107, 0.707107, 0.0]
+    min_thrust: -40.0
+    max_thrust: 40.0
+
+  - name: 3
+    position: [-0.1475, -0.1, -0.0725]
+    direction: [0.707107, 0.707107, 0.0]
+    min_thrust: -40.0
+    max_thrust: 40.0
+
+  - name: 4
+    position: [-0.1475, 0.1, -0.0725]
+    direction: [0.707107, -0.707107, 0.0]
+    min_thrust: -40.0
+    max_thrust: 40.0
+
+  - name: 5
+    position: [0.0025, -0.1105, -0.005]
+    direction: [0.0, 0.0, 1.0]
+    min_thrust: -40.0
+    max_thrust: 40.0
+
+  - name: 6
+    position: [0.0025, 0.1105, -0.005]
+    direction: [0.0, 0.0, -1.0]
+    min_thrust: -40.0
+    max_thrust: 40.0

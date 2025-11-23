@@ -1,0 +1,108 @@
+# Incoming messages
+# Topic published by the simulator core
+- ros_topic_name: "clock"
+  gz_topic_name:  "clock"
+  ros_type_name:  "rosgraph_msgs/msg/Clock"
+  gz_type_name:   "gz.msgs.Clock"
+  direction:       GZ_TO_ROS
+
+# Topic published by JointState plugin
+- ros_topic_name: "joint_states"
+  gz_topic_name:  "joint_states"
+  ros_type_name:  "sensor_msgs/msg/JointState"
+  gz_type_name:   "gz.msgs.Model"
+  direction:       GZ_TO_ROS
+
+# Topic published by DiffDrive plugin
+- ros_topic_name: "odom"
+  gz_topic_name:  "odom"
+  ros_type_name:  "nav_msgs/msg/Odometry"
+  gz_type_name:   "gz.msgs.Odometry"
+  direction:       GZ_TO_ROS
+
+# Topic published by DiffDrive plugin
+- ros_topic_name: "tf"
+  gz_topic_name:  "model/bluerov2/pose"
+  ros_type_name:  "tf2_msgs/msg/TFMessage"
+  gz_type_name:   "gz.msgs.Pose_V"
+  direction:       GZ_TO_ROS
+
+# Image data
+- ros_topic_name: "/bluerov2/image"
+  gz_topic_name:  "/bluerov2/image"
+  ros_type_name:  "sensor_msgs/msg/Image"
+  gz_type_name:   "gz.msgs.Image"
+  direction:       GZ_TO_ROS
+
+# Camera info
+- ros_topic_name: "/bluerov2/camera_info"
+  gz_topic_name:  "/bluerov2/camera_info"
+  ros_type_name:  "sensor_msgs/msg/CameraInfo"
+  gz_type_name:   "gz.msgs.CameraInfo"
+  direction:       GZ_TO_ROS
+
+# Topic published by Sensors plugin
+- ros_topic_name: "/bluerov2/sonar"
+  gz_topic_name:  "/bluerov2/sonar"
+  ros_type_name:  "sensor_msgs/msg/LaserScan"
+  gz_type_name:   "gz.msgs.LaserScan"
+  direction:       GZ_TO_ROS
+
+# sensor_msgs/msg/Imu, /bluerov2/mpu
+- ros_topic_name: "/bluerov2/mpu"
+  gz_topic_name:  "/bluerov2/mpu"
+  ros_type_name:  "sensor_msgs/msg/Imu"
+  gz_type_name:   "gz.msgs.IMU"
+  direction:       GZ_TO_ROS
+
+# sensor_msgs/msg/Imu, /bluerov2/lsm
+- ros_topic_name: "/bluerov2/lsm"
+  gz_topic_name:  "/bluerov2/lsm"
+  ros_type_name:  "sensor_msgs/msg/Imu"
+  gz_type_name:   "gz.msgs.IMU"
+  direction:       GZ_TO_ROS
+
+# Outgoing messages
+# Topic to control gazebo thruster plugins
+- gz_topic_name:  "/bluerov2/thruster1/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster1"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+- gz_topic_name:  "/bluerov2/thruster2/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster2"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+- gz_topic_name:  "/bluerov2/thruster3/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster3"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+- gz_topic_name:  "/bluerov2/thruster4/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster4"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+- gz_topic_name:  "/bluerov2/thruster5/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster5"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+- gz_topic_name:  "/bluerov2/thruster6/cmd"
+  ros_topic_name: "/bluerov2/cmd_thruster6"
+  ros_type_name:  "std_msgs/msg/Float64"
+  gz_type_name:   "gz.msgs.Double"
+  direction:       ROS_TO_GZ
+
+# Ocean current topic?
+- ros_topic_name: "ocean_current"
+  gz_topic_name:  "ocean_current"
+  ros_type_name:  "geometry_msgs/msg/Vector3"
+  gz_type_name:   "gz.msgs.Vector3d"
+  direction:       ROS_TO_GZ
