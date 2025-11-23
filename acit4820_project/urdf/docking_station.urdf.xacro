@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<robot name="docking_station" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="inertial_macros.xacro"/>
+
+    <xacro:property name="rov_x"      value="0.45"/>
+    <xacro:property name="rov_y"      value="0.33"/>
+    <xacro:property name="rov_z"      value="0.24"/>
+
+    <xacro:property name="beam_width" value="0.05"/>
+    <xacro:property name="padding"    value="0.05"/>
+    <xacro:property name="beam_mass"  value="0.05"/>
+
+    <xacro:macro name="default_wall" params="namespace xyz rpy parent">
+        <link name="${namespace}_link">
+            <visual>
+                <geometry>
+                    <box size="${rov_x+2*padding} ${rov_y+2*padding} ${beam_width}"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <geometry>
+                    <box size="${rov_x+2*padding} ${rov_y+2*padding} ${beam_width}"/>
+                </geometry>
+            </collision>
+        
+            <xacro:inertial_box mass="${beam_mass}" x="${rov_x+2*padding}" y="${rov_y+2*padding}" z="${beam_width}">
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+            </xacro:inertial_box>
+        </link>
+
+        <gazebo reference="${namespace}_link">
+            <mu1>1.0</mu1>
+            <mu2>1.0</mu2>
+            <material>Gazebo/White</material>
+        </gazebo>
+
+        <joint name="${namespace}_joint" type="fixed">
+            <parent link="${parent}"/>
+            <child link="${namespace}_link"/>
+            <origin xyz="${xyz}" rpy="${rpy}"/>
+        </joint>
+    </xacro:macro>
+
+    <link name="dock_base_footprint"/>
+
+    <xacro:default_wall namespace="dock_base"  xyz="0 0 0" rpy="0 0 0" parent="dock_base_footprint"/>
+
+    <link name="dock_back_link">
+        <visual>
+            <geometry>
+                <box size="${beam_width} ${rov_y+2*padding} ${rov_y+2*padding}"/>
+            </geometry>
+        </visual>
+
+        <collision>
+            <geometry>
+                <box size="${beam_width} ${rov_y+2*padding} ${rov_y+2*padding}"/>
+            </geometry>
+        </collision>
+        
+        <xacro:inertial_box mass="${beam_mass}" x="${beam_width}" y="${rov_y+2*padding}" z="${rov_y+2*padding}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="dock_back_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <joint name="dock_back_joint" type="fixed">
+        <parent link="dock_base_link"/>
+        <child link="dock_back_link"/>
+        <origin xyz="${(-(rov_x + padding)/2) - beam_width/2} 0 ${((rov_y+padding)/2)+ 0.5*beam_width}" rpy="0 0 0" />
+    </joint>
+
+    <link name="aruco_link">
+        <inertial>
+            <mass value="0"/>
+            <origin xyz="-0.019662 0.011643 0.5"/>
+            <inertia
+                ixx="0.01042" ixy="0.001177" ixz="-0.0008871"
+                iyy="0.01045" iyz="0.0002226"
+                izz="0.01817"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.36 0.36 0"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <gazebo reference="aruco_link">
+        <material>arucomarker0/Image</material>
+    </gazebo>
+    
+    <joint name="aruco_joint" type="fixed">
+        <origin xyz="0 0 2" rpy="0 0 0"/>
+        <parent link="dock_base_link"/>
+        <child link="aruco_link"/>
+    </joint>
+    
+
+    <xacro:default_wall namespace="left_wall"  xyz="0  ${((rov_y+padding)/2) + 0.5*beam_width} ${((rov_y+padding)/2) + 0.5*beam_width}" rpy="${pi/2} 0 0" parent="dock_base_link"/>
+    <xacro:default_wall namespace="right_wall" xyz="0 -${((rov_y+padding)/2) + 0.5*beam_width}  ${((rov_y+padding)/2) + 0.5*beam_width}" rpy="${pi/2} 0 0" parent="dock_base_link"/>
+    <xacro:default_wall namespace="roof"       xyz="0 0 ${(rov_y+padding) + beam_width}" rpy="0 0 0" parent="dock_base_link"/>
+
+    <gazebo>
+        <static>true</static>
+    </gazebo>
+</robot>
