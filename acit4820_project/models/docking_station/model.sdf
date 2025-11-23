@@ -1,0 +1,350 @@
+<sdf version='1.11'>
+  <model name='docking_station'>
+    <link name='dock_base_footprint'>
+      <inertial>
+        <pose>-0.055000000000000021 6.9388939039072284e-18 0.215 0 0 0</pose>
+        <mass>0.25</mass>
+        <inertia>
+          <ixx>0.024329166666666669</ixx>
+          <ixy>0.0011770000000000001</ixy>
+          <ixz>-0.00088710000000000091</ixz>
+          <iyy>0.02548166666666667</iyy>
+          <iyz>0.00022260000000000029</iyz>
+          <izz>0.033201666666666671</izz>
+        </inertia>
+      </inertial>
+      <collision name='dock_base_footprint_fixed_joint_lump__dock_base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='dock_base_footprint_fixed_joint_lump__dock_back_link_collision_1'>
+        <pose>-0.27500000000000002 0 0.215 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.050000000000000003 0.42999999999999999 0.42999999999999999</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='dock_base_footprint_fixed_joint_lump__left_wall_link_collision_2'>
+        <pose>0 0.215 0.215 1.5707963267948959 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='dock_base_footprint_fixed_joint_lump__right_wall_link_collision_3'>
+        <pose>0 -0.215 0.215 1.5707963267948959 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='dock_base_footprint_fixed_joint_lump__roof_link_collision_4'>
+        <pose>0 0 0.42999999999999999 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='dock_base_footprint_fixed_joint_lump__dock_base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='dock_base_footprint_fixed_joint_lump__dock_back_link_visual_2'>
+        <pose>-0.27500000000000002 0 0.215 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.050000000000000003 0.42999999999999999 0.42999999999999999</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='dock_base_footprint_fixed_joint_lump__left_wall_link_visual_3'>
+        <pose>0 0.215 0.215 1.5707963267948959 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='dock_base_footprint_fixed_joint_lump__right_wall_link_visual_4'>
+        <pose>0 -0.215 0.215 1.5707963267948959 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='dock_base_footprint_fixed_joint_lump__roof_link_visual_5'>
+        <pose>0 0 0.42999999999999999 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.55000000000000004 0.42999999999999999 0.050000000000000003</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name="aruco_marker0">
+        <pose>0.276 -0.215 0.215 0 1.5708 0</pose> <!-- box entrance right-->
+        <geometry>
+          <plane>
+            <size>0.05 0.05</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-0.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker1">
+        <pose>0.276 0.215 0.215 0 1.5708 0</pose> <!-- box entrance left -->
+        <geometry>
+          <plane>
+            <size>0.05 0.05</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-1.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker2"> <!-- inner back -->
+        <pose>-0.226 0.0 0.215 0 1.5708 0</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-2.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker3"> <!-- left side -->
+        <pose>0.0 0.251 0.215 0 1.5708 1.5708</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-3.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker4"> <!-- right side -->
+        <pose>0.0 -0.251 0.215 0 1.5708 -1.5708</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-4.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker5"> <!-- bottom -->
+        <pose>0.0 0.0 -0.026 0 3.14 0</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-5.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker6"> <!-- roof -->
+        <pose>0.0 0.0 0.456 0 0 0</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-6.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="aruco_marker7"> <!-- outer back -->
+        <pose>-0.32 0.0 0.215 0 -1.5708 0</pose>
+        <geometry>
+          <plane>
+            <size>0.25 0.25</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>5x5_1000-7.jpg</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+    <static>true</static>
+    <frame name='dock_back_joint' attached_to='dock_base_link'>
+      <pose>-0.27500000000000002 0 0.215 0 0 0</pose>
+    </frame>
+    <frame name='dock_back_link' attached_to='dock_back_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='left_wall_joint' attached_to='dock_base_link'>
+      <pose>0 0.215 0.215 1.5707963267948959 0 0</pose>
+    </frame>
+    <frame name='left_wall_link' attached_to='left_wall_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='right_wall_joint' attached_to='dock_base_link'>
+      <pose>0 -0.215 0.215 1.5707963267948959 0 0</pose>
+    </frame>
+    <frame name='right_wall_link' attached_to='right_wall_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='roof_joint' attached_to='dock_base_link'>
+      <pose>0 0 0.42999999999999999 0 0 0</pose>
+    </frame>
+    <frame name='roof_link' attached_to='roof_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='dock_base_joint' attached_to='dock_base_footprint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='dock_base_link' attached_to='dock_base_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>
